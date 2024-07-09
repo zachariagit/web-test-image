@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web test</title>
+</head>
+<body>
+    <h1>Viewer</h1>
+        <label for="imageCount">Number of Images:</label>
+        <input type="text" id="imageCount" name="imageCount" value="4">
+        <button type="button" onclick="displayTable()">Display Images</button>
+    <div id="message" class="error"></div>
+    <div id="imagesHeader"></div>
+    <div id="imagesContainer"></div>
+
+    <script>
+        function displayTable() {
+            const imageCount = parseInt(document.getElementById('imageCount').value);
+            const messageDiv = document.getElementById('message');
+            const imagesContainer = document.getElementById('imagesContainer');
+            const imagesHeader = document.getElementById('imagesHeader');
+
+            messageDiv.innerHTML = '';
+            imagesContainer.innerHTML = '';
+            imagesHeader.innerHTML = '';
+
+            if (isNaN(imageCount) || imageCount % 2 !== 0) {
+                messageDiv.innerHTML = 'Invalid value';
+                return;
+            }
+
+            imagesHeader.innerHTML = 'Images';
+
+            let tableHtml = '<table>';
+            for (let i = 1; i <= imageCount; i++) {
+                if (i % 2 === 1) {
+                    tableHtml = tableHtml + '<tr>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
